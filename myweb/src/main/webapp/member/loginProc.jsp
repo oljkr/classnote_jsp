@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="ssi.jsp" %>
 <%@ include file="../header.jsp" %>
- <!-- 본문시작 template.jsp -->
+ <!-- 본문시작 loginProc.jsp -->
 <h3>* 로 그 인 결과 *</h3>
 <%
 	String id=request.getParameter("id").trim();

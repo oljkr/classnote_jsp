@@ -2,7 +2,7 @@
     pageEncoding="UTF-8"%>
 <%@ include file="ssi.jsp" %>
 <%@ include file="../header.jsp" %>
- <!-- 본문시작 template.jsp -->
+ <!-- 본문시작 loginForm.jsp -->
 <h3>* 로 그 인 *</h3>
 <form name="loginfrm" id="loginfrm" action="loginProc.jsp">
 	<table class="table">
