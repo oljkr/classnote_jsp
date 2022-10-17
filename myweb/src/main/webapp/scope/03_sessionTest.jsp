@@ -42,6 +42,31 @@
 	out.print("세션변수 s_id : "+s_id+"<hr>");
 	out.print("세션변수 s_pw : "+s_pw+"<hr>");
 	
+	//세션변수 강제 제거(로그아웃할때) -> null값
+	session.removeAttribute("s_id");
+	session.removeAttribute("s_pw");
+	
+	out.print("세션변수 삭제후<hr>");
+	out.print("세션변수 s_id : "+session.getAttribute("s_id"));
+	out.print("<hr>");
+	out.print("세션변수 s_pw : "+session.getAttribute("s_pw"));
+	out.print("<hr>");
+	
+	//세션영역에 있는 모든값 전부 강제 삭제
+	session.invalidate();
+//--------------------------------------------------------------
+
+	//세션 시간
+	out.print("현재 세션 유지 시간 : ");
+	out.print(session.getMaxInactiveInterval());
+	out.print("초(30분)");
+	out.print("<hr>");
+	
+	session.setMaxInactiveInterval(60*10);
+	out.print("변경된 세션 유지 시간 : ");
+	out.print(session.getMaxInactiveInterval());
+	out.print("초(30분)");
+	out.print("<hr>");
 	
 
 
