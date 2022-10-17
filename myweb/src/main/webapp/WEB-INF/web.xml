@@ -7,12 +7,14 @@
   <!-- /WEB-INF/web.xml이 수정되면 반드시 서버를 재시작할 것!! -->
   <!-- /WEB-INF/lib에 외부 라이브러리(.jar)가 추가되면 반드시 서버를 재시작할 것!! -->
   
+  <!-- 웹어플리케이션 연결시 첫페이지 등록 -->
+  <!-- http://localhost:9090/myweb 입력하면 index.jsp 자동으로 호출 -->
   <welcome-file-list>
-    <welcome-file>index.html</welcome-file>
     <welcome-file>index.jsp</welcome-file>
-    <welcome-file>index.htm</welcome-file>
-    <welcome-file>default.html</welcome-file>
-    <welcome-file>default.jsp</welcome-file>
-    <welcome-file>default.htm</welcome-file>
   </welcome-file-list>
+  
+  <!-- 세션 유지 시간 설정 (20분) -->
+  <session-config>
+  	<session-timeout>20</session-timeout>
+  </session-config>
 </web-app>
