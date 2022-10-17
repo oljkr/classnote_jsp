@@ -25,3 +25,24 @@ CREATE TABLE member (
 );
 
 commit;
+
+-- 행추가
+insert into member(id, passwd, mname, tel, email, zipcode, address1, address2, job, mlevel, mdate)
+values('webmaster', '12341234', '웹마스터', '123-4567', 'webmaster@itwill.com'
+     , '12345', '서울시 강남구 역삼동', '삼원타워4층', 'A02', 'A1', sysdate );
+insert into member(id, passwd, mname, tel, email, zipcode, address1, address2, job, mlevel, mdate)
+values('itwill', '12341234', '웹마스터', '123-4567', 'itwill@itwill.com'
+     , '12345', '서울시 강남구 역삼동', '삼원타워4층', 'A02', 'D1', sysdate );
+insert into member(id, passwd, mname, tel, email, zipcode, address1, address2, job, mlevel, mdate)
+values('user1', '12341234', '웹마스터', '123-4567', 'user1@soldesk.com'
+     , '12345', '서울시 종로구 관철동', '코아빌딩8층', 'A02', 'F1', sysdate );
+     
+--로그인
+--회원등급을 가져와서 등급에 따라 프론트 페이지를 다르게 보여준다.
+--아이디와 비번이 일치하면 회원등급 가져오기
+--비회원과 탈퇴한 회원은 로그인을 하게하면 안 된다.
+SELECT mlevel
+FROM member
+WHERE id='webmaster' AND passwd='12341234' 
+AND mlevel in ('A1','B1','C1','D1');
+

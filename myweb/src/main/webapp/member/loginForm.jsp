@@ -1,9 +1,10 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
+<%@ include file="ssi.jsp" %>
 <%@ include file="../header.jsp" %>
  <!-- 본문시작 template.jsp -->
 <h3>* 로 그 인 *</h3>
-<form name="loginfrm" id="loginfrm">
+<form name="loginfrm" id="loginfrm" action="loginProc.jsp">
 	<table class="table">
 	<tr>
 	    <td>
