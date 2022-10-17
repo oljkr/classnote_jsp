@@ -68,7 +68,13 @@
 	out.print("초(30분)");
 	out.print("<hr>");
 	
-
+	/*
+	  /WEB-INF/web.xml 배치관리자에서 세션시간 변경
+	  <!-- 세션 유지 시간 설정(20분) -->
+	  <session-config>
+     	<session-timeout>20</session-timeout>
+      </session-config>
+	*/
 
 %>
 
