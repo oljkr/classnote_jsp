@@ -1,7 +1,7 @@
 <%@ page language="java" contentType="text/html; charset=UTF-8"
     pageEncoding="UTF-8"%>
 <!DOCTYPE html>
-<html lang="ko            ">
+<html lang="ko">
 <head>
   <title>index.jsp</title>
   <meta charset="utf-8">
@@ -16,6 +16,7 @@
   <link rel="stylesheet" href="./css/layout.css">
   <script src="./js/myscript.js"></script>
   <script src="./js/mouseheart.js"></script>
+  <script src="./js/digitalClock.js"></script>
 </head>
 <body>
 
@@ -54,7 +55,11 @@
   <div class="row">
     <div class="col-xs-12">
     	<!-- 본문시작 -->
-    		본문은 여기에 작성해 주세요~
+    		<h3>*~ 디지털 시계 ~ *</h3>
+    		<div id="clock"></div>
+		    <hr>
+		    <input type="button" value="시작" onclick="showtime()">
+		    <input type="button" value="중지" onclick="killtime()">
     	<!-- 본문끝 -->
     </div><!-- col 끝 -->
     
