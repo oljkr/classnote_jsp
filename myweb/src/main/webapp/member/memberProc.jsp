@@ -36,10 +36,8 @@
 		out.println("     location.href='loginForm.jsp'"); //로그인페이지 이동
 		out.println("</script>");
 	}//if end
-	
 
 %>	
-	
-	
+
  <!-- 본문끝 -->
 <%@ include file="../footer.jsp" %>

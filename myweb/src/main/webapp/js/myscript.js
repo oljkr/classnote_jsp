@@ -113,15 +113,56 @@ function emailCheck(){ //이메일 중복확인
 
 function memberCheck(){ //회원가입 유효성 검사
 	//1)아이디 5~10글자 인지?
+	let id = document.getElementById("id").value;
+	id=id.trim();
+	if(!(5<=id.length && id.length<=10)){ //isNaN은 숫자를 입력 안하면 true가 나올것임
+		alert("아이디 5~10글자 사이로 입력해 주세요");
+		document.getElementById("id").focus();
+		return false;
+	}//if end
 	
     //2)비밀번호 5~10글자 인지?
+    let passwd = document.getElementById("passwd").value;
+	passwd=passwd.trim();
+	if(!(5<=passwd.length && passwd.length<=10)){ //isNaN은 숫자를 입력 안하면 true가 나올것임
+		alert("비밀번호 4글자 이상으로 숫자만 입력해 주세요");
+		document.getElementById("passwd").focus();
+		return false;
+	}//if end
 	
     //3)비밀번호와 비밀번호확인이 서로 일치하는지?
+    let repasswd = document.getElementById("repasswd").value;
+    if(!(passwd == repasswd)){
+		alert("비밀번호와 비밀번호 확인 문자열이 다릅니다.");
+		document.getElementById("passwd").focus();
+		return false;
+	}//if end
 
     //4)이름 2글자 이상 인지?
+    let mname = document.getElementById("mname").value; //작성자 가져오기
+	mname=mname.trim();
+	if(mname.length<2){
+		alert("작성자 2글자 이상 입력해 주세요");
+		document.getElementById("mname").focus();//작성자칸에 커서 생성
+		return false; //onsubmit은 return 값을 가지므로 return을 넣어줌.
+	}//if end
 
     //5)이메일 5글자 인지?
+    let email = document.getElementById("email").value; //작성자 가져오기
+	email=email.trim();
+	if(email.length<5){
+		alert("이메일 5글자 이상 입력해 주세요");
+		document.getElementById("email").focus();//작성자칸에 커서 생성
+		return false; //onsubmit은 return 값을 가지므로 return을 넣어줌.
+	}//if end
 
     //6)직업을 선택했는지?
-	
+    let job = document.getElementsByName("job").value; //작성자 가져오기
+	if(job == 0){
+		alert("직업을 선택해 주세요");
+		document.getElementsByName("job").focus();//작성자칸에 커서 생성
+		return false; //onsubmit은 return 값을 가지므로 return을 넣어줌.
+	}//if end
+
+	return true;
 }//memberCheck() end
