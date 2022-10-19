@@ -56,3 +56,6 @@ where id=?;
 INSERT INTO member(id, passwd, mname, tel, email, zipcode, address1, address2, job, mlevel, mdate)
 VALUES(?,?,?,?,?,?,?,?,?, 'D1', sysdate)
 
+--임시비밀번호로 회원정보 수정
+UPDATE member SET passwd=?
+where id=?

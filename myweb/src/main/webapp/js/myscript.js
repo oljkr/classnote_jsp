@@ -166,3 +166,25 @@ function memberCheck(){ //회원가입 유효성 검사
 
 	return true;
 }//memberCheck() end
+
+function findIdCheck(){ //입력 유효성 검사 (이름, 이메일)
+	//이름 2글자 이상 인지?
+    let mname = document.getElementById("mname").value; //작성자 가져오기
+	mname=mname.trim();
+	if(mname.length<2){
+		alert("회원이름 2글자 이상 입력해 주세요");
+		document.getElementById("mname").focus();//작성자칸에 커서 생성
+		return false; //onsubmit은 return 값을 가지므로 return을 넣어줌.
+	}//if end
+
+    //이메일 5글자 인지?
+    let email = document.getElementById("email").value; //작성자 가져오기
+	email=email.trim();
+	if(email.length<5){
+		alert("이메일 5글자 이상 입력해 주세요");
+		document.getElementById("email").focus();//작성자칸에 커서 생성
+		return false; //onsubmit은 return 값을 가지므로 return을 넣어줌.
+	}//if end
+	
+	return true;
+}//findIdCheck() end

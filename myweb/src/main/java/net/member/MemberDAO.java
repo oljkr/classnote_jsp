@@ -130,4 +130,127 @@ public class MemberDAO { //Data Access Object
 		}//end
 		return cnt;
 	}//create() end
+	
+	
+	public int findID(MemberDTO dto) {
+		int cnt=0;
+		try {
+			con=dbopen.getConnection();//DB연결
+			
+			sql = new StringBuilder();
+			sql.append(" SELECT count(email) as cnt");
+			sql.append(" FROM member ");
+			sql.append(" WHERE mname=? AND email=? ");
+			
+			pstmt=con.prepareStatement(sql.toString());
+			pstmt.setString(1, dto.getMname());
+			pstmt.setString(2, dto.getEmail());
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				cnt=rs.getInt("cnt");
+			}//if end
+			
+		} catch (Exception e) {
+			System.out.println("회원 아이디 찾기 확인 실패:"+e);
+		} finally {
+			DBClose.close(con, pstmt, rs);
+		}//end
+		
+		return cnt;
+	}//findID() end
+	
+	public String showId(MemberDTO dto) {
+		String id="";
+		try {
+			con=dbopen.getConnection();//DB연결
+			
+			sql = new StringBuilder();
+			sql.append(" SELECT id");
+			sql.append(" FROM member ");
+			sql.append(" WHERE mname=? AND email=? ");
+			
+			pstmt=con.prepareStatement(sql.toString());
+			pstmt.setString(1, dto.getMname());
+			pstmt.setString(2, dto.getEmail());
+			
+			rs=pstmt.executeQuery();
+			
+			if(rs.next()) {
+				id=rs.getString("id");
+			}//if end
+			
+		} catch (Exception e) {
+			System.out.println("회원 아이디 찾기 확인 실패:"+e);
+		} finally {
+			DBClose.close(con, pstmt, rs);
+		}//end
+		
+		return id;
+	}//showId() end
+	
+	public int updateTempPw(MemberDTO dto) {
+		int cnt=0;
+		try {
+			con=dbopen.getConnection();
+			
+			sql = new StringBuilder();
+			
+			sql.append(" UPDATE member ");
+			sql.append(" SET passwd=? ");
+			sql.append(" WHERE id=? ");
+			
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, dto.getPasswd());
+			pstmt.setString(2, dto.getId());
+			
+			cnt=pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			System.out.println("수정 실패:"+e);
+		}finally {
+			DBClose.close(con, pstmt);
+		}//end
+
+		return cnt;
+	}
+	
+	public MemberDTO read(String id) { 
+		MemberDTO dto=null;
+		try {
+			con=dbopen.getConnection();
+			
+			sql = new StringBuilder();
+			sql.append(" SELECT id, passwd, mname, tel, email, zipcode, address1, address2, job ");
+			sql.append(" FROM member  ");
+			sql.append(" WHERE id=? ");
+			
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, id);
+			
+			rs = pstmt.executeQuery(); 
+			if (rs.next()) { 
+				dto=new MemberDTO();
+				dto.setId(rs.getString("id"));
+				dto.setPasswd(rs.getString("passwd"));
+				dto.setMname(rs.getString("mname"));
+				dto.setTel(rs.getString("tel"));
+				dto.setEmail(rs.getString("email"));
+				dto.setZipcode(rs.getString("zipcode"));
+				dto.setAddress1(rs.getString("address1"));
+				dto.setAddress2(rs.getString("address2"));
+				dto.setJob(rs.getString("job"));
+			}else {
+				dto=null;
+			}//if end			
+			
+		}catch (Exception e) {
+			System.out.println("회원정보 불러오기 실패:" + e);
+		}finally {
+			DBClose.close(con, pstmt, rs);
+		}//end
+		return dto;
+	}//read() end
+	
 }//class end
