@@ -59,3 +59,22 @@ VALUES(?,?,?,?,?,?,?,?,?, 'D1', sysdate)
 --임시비밀번호로 회원정보 수정
 UPDATE member SET passwd=?
 where id=?
+
+--아이디/비번찾기 연습용 데이터 행추가 (확인 가능한 이메일 주소 정확히 적어주세요)
+insert into member(id, passwd, mname, tel, email, zipcode, address1, address2, job, mlevel, mdate)
+values('kimkim', '12341234', '웹마스터', '123-4567', 'aabbcc@naver.com'
+     , '12345', '서울시 종로구 관철동', '코아빌딩8층', 'A02', 'F1', sysdate );
+commit;
+
+--아이디/비번찾기
+1)이름과 이메일 일치하면 id가져오기
+select id
+from member
+where mname=? and email=?
+
+2)임시 비밀번호를 발급해서 테이블 수정하기
+update member
+set passwd=?
+where mname=? and email=?
+
+, 아이디와 임시비밀번호를 메일로 전송하기

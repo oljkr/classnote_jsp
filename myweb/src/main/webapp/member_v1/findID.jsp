@@ -2,9 +2,10 @@
     pageEncoding="UTF-8"%>
 <%@ include file="../header.jsp" %>
  <!-- 본문시작 findID.jsp -->
-<h3>* 아이디/비번 찾기 *</h3>
-<form method="post" action="findIDProc.jsp" onsubmit="return findIDCheck()"><!-- myscript.js -->
-	<table class="table">
+ <div style="text-align: center">
+	찾으시는 아이디에 해당하는 이름과 이메일 주소를 기입해 주세요
+	<form name="findidfrm" id="findidfrm" action="findidProc.jsp" onsubmit="return findIdCheck()"><!-- myscript.js -->
+		<table class="table">
 		<tr>
 		    <td>
 				<input type="text" name="mname" id="mname"  placeholder="이름" maxlength="20" required>
@@ -21,7 +22,9 @@
      			<input type="reset"  value="취소"      class="btn btn-primary"/>
    			</td>
 		</tr>	  
-	</table>
-</form>
+		</table>
+	</form>
+ </div>
+	
  <!-- 본문끝 -->
 <%@ include file="../footer.jsp" %>
