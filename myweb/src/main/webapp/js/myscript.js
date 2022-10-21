@@ -188,3 +188,37 @@ function findIdCheck(){ //입력 유효성 검사 (이름, 이메일)
 	
 	return true;
 }//findIdCheck() end
+
+function pdsCheck(){ //포토갤러리 유효성 검사
+	//1)이름
+	
+	//2)제목
+	
+	//3)비밀번호
+	
+	//4)첨부파일
+	//->파일의 확장명이 이미지 파일(png, jpg, gif)
+	//html문서에서 확인 가능한 이미지들만 전송..(imgsrc가 먹히는 것만)
+	//아래서 file의 value가 string 값임
+	//파일명이 대문자일 수 있으니까 전부 소문자로 바꿔서 소문자로 물어보기
+	let filename=document.getElementById("filename").value; //예)sky.png
+	filename=filename.trim();
+	if(filename.length==0){
+		alert("첨부 파일 선택하세요~");
+		return false;
+	}else{
+		//filename변수값에서 마지막 . 의 순서값
+		let dot=filename.lastIndexOf(".");
+		//확장명 : 마지막 . 이후 문자열 자르기
+		let ext=filename.substr(dot+1);
+		//확장명을 전부 소문자 치환
+		ext=ext.toLowerCase();
+		if(ext=="png" || ext=="jpg" || ext=="gif"){
+			return true;
+		}else{
+			alert("이미지 파일만 업로드 가능합니다~");
+			return false;
+		}//if end
+	}//if end	
+	
+}//pdsCheck() end

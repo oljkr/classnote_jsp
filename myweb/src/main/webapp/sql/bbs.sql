@@ -161,3 +161,31 @@ FROM (
 	 )
 WHERE r>=6 AND r<=10;
 
+댓글 숫자로 표시하기
+1) 
+select subject, grpno, indent
+from tb_bbs
+order by grpno desc
+
+   
+2) 그룹번호로 묶어서 그 번호에 속한 글들이 몇개인지 조회 하라
+select grpno, count(*) 
+from tb_bbs
+group by grpno;
+
+3)
+select grpno, count(*)-1 
+from tb_bbs
+group by grpno;
+
+4) 3)의 논리적 테이블에 셀프조인해서 최초 부모글 (indent=0)인 제목 가져오기
+select BB.subject, AA.reply
+from(
+   select grpno, count(*)-1 as reply
+   from tb_bbs
+   group by grpno
+    )AA join tb_bbs BB
+on AA.grpno=BB.grpno
+where BB.indent=0
+order by BB.grpno desc;
+

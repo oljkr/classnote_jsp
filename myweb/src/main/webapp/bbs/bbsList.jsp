@@ -46,6 +46,9 @@
 %>
 					<a href="bbsRead.jsp?bbsno=<%=dto.getBbsno()%>&col=<%=col%>&word=<%=word%>&nowPage=<%=nowPage%>"><%=dto.getSubject()%></a>
 <%
+					//답글이 1개 이상이면 답글문구 표시
+					
+
 					//오늘 작성한 글제목 뒤에 new 이미지 출력
 					//작성일(regdt)에서 "년월일"만자르기
 					String regdt=dto.getRegdt().substring(0,10);
@@ -57,6 +60,14 @@
 					if(dto.getReadcnt()>=10){
 						out.println("<img src='../images/hot.gif'>");					
 					}//if end
+					
+					//답글 1개 이상이면 표시하기
+					int grpno=dto.getGrpno();
+					int replycnt=dao.count3(grpno);
+					if(dto.getIndent()==0 && replycnt>=1){
+						out.println("답글"+replycnt);
+					}
+					
 %>						
 				</td>
 				<td><%=dto.getReadcnt()%></td>
@@ -95,7 +106,7 @@
 						<option value="content">내용
 						<option value="wname">작성자
 					</select>
-					<input type="text" name="word" id="word">
+					<input type="text" name="word" id="word" value=<%=word%>>
 					<input type="submit" value="검색" class="btn btn-primary">				
 				</form>
 			</td>
