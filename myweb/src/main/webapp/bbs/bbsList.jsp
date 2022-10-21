@@ -61,7 +61,7 @@
 						out.println("<img src='../images/hot.gif'>");					
 					}//if end
 					
-					//답글 1개 이상이면 표시하기
+					//답글 1개 이상이면 제목 옆에 표시하기
 					int grpno=dto.getGrpno();
 					int replycnt=dao.count3(grpno);
 					if(dto.getIndent()==0 && replycnt>=1){

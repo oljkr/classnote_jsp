@@ -505,6 +505,6 @@ public ArrayList<BbsDTO> list2(String col, String word){
 			DBClose.close(con, pstmt, rs);
 		}//end
 		return cnt;
-	}//count3() end
+	}//count4() end
 	
 }//class end
