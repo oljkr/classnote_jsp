@@ -240,3 +240,14 @@ function pwCheck2(){
 	}//if end
 	return true;
 }//pwCheck2() end
+
+$("#delbutton").click(function(){
+   /* $("#orifilename").removeAttr("#password");*/
+    /*$("input").remove("#orifilename");*/
+    alert("helloworld");
+        });//click end
+        
+function removeInput(){
+	var element = document.getElementById("orifilename"); // notice the change
+	element.parentNode.removeChild(element);
+}

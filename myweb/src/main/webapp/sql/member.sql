@@ -78,3 +78,12 @@ set passwd=?
 where mname=? and email=?
 
 , 아이디와 임시비밀번호를 메일로 전송하기
+
+--회원탈퇴
+update member
+set mlevel='F1'
+where id=? ans passwd=?;
+
+--회원 정보 수정
+--1) 수정하고자 하는 행을 가져오기 -> read() 함수
+select mname, tel, email, zipcode,, a

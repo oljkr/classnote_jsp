@@ -18,6 +18,7 @@
   <script src="../js/clock.js"></script>
   <script src="../js/myscript.js"></script>
   <script src="../js/mouseheart.js"></script>
+  <script src="../js/jquery-3.6.1.min.js"></script>
 </head>
 <body>
 
