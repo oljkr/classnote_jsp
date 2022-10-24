@@ -48,8 +48,8 @@
 		</table>
 		
 		<br>
-		<input type="button" value="답변쓰기" onclick="location.href='pdsReply.jsp?pdsno=<%=pdsno%>'">
-		<input type="button" value="수정" onclick="location.href='pdsUpdate.jsp?pdsno=<%=pdsno%>&col=<%=col%>&word=<%=word%>'">
+		<input type="button" value="수정" onclick="location.href='pdsUpdate.jsp?pdsno=<%=pdsno%>'">
+		<input type="button" value="삭제" onclick="location.href='pdsDel.jsp?pdsno=<%=pdsno%>'">
 <%
 	}//if end
 %>

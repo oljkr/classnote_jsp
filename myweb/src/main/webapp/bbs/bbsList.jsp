@@ -50,7 +50,7 @@
 					
 
 					//오늘 작성한 글제목 뒤에 new 이미지 출력
-					//작성일(regdt)에서 "년월일"만자르기
+					//작성일(regdt)에서 "년월일"만자르기	
 					String regdt=dto.getRegdt().substring(0,10);
 					if(regdt.equals(today)){ //작성일과 오늘날짜가 같다면
 						out.println("<img src='../images/new.gif'>");					

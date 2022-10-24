@@ -30,7 +30,6 @@
  <%
  	for(int i=0; i<list.size(); i++){
  		dto=list.get(i);
-
  
  %>
 	 <tr>

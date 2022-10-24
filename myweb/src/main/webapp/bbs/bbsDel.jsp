@@ -17,9 +17,11 @@
 			<th>비밀번호</th>
 			<td><input type="password" name="passwd" id="passwd" required></td>
 		</tr>
+		<tr>
 			<td colspan="2">
 				<input type="submit" value="삭제">
 			</td>
+		<tr>
 		</table>
 	</form>
 </div>

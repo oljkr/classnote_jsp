@@ -8,6 +8,7 @@ import java.util.ArrayList;
 import net.bbs.BbsDTO;
 import net.utility.DBClose;
 import net.utility.DBOpen;
+import net.utility.Utility;
 
 public class PdsDAO { //데이터베이스관련 작업
 	
@@ -136,5 +137,39 @@ public class PdsDAO { //데이터베이스관련 작업
 			DBClose.close(con, pstmt);
 		}//end		
 	}//incrementCnt() end
+	
+	public int delete(int pdsno, String passwd, String saveDir) {
+		int cnt=0;
+		try {
+				
+			//테이블의 행 삭제하기 전에, 삭제하고자 하는 파일명 가져온다
+			//read함수를 이용한다.
+			String filename="";
+			PdsDTO oldDTO=read(pdsno);
+			if(oldDTO != null) {
+				filename=oldDTO.getFilename();
+			}//if end
+			
+			con=dbopen.getConnection();
+			sql = new StringBuilder();
+			sql.append(" DELETE FROM tb_pds");
+			sql.append(" WHERE pdsno=? AND passwd=? ");
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setInt(1, pdsno);
+			pstmt.setString(2, passwd);
+			
+			cnt=pstmt.executeUpdate();
+			
+			if(cnt==1) { //테이블에서 행삭제가 성공했으므로, 첨부했던 파일도 삭제
+				Utility.deleteFile(saveDir, filename);		
+			}//if end
+			
+		}catch (Exception e) {
+			System.out.println("삭제 실패:"+e);
+		}finally {
+			DBClose.close(con, pstmt);
+		}//end
+		return cnt;
+	}//delete() end
 	
 }//class end

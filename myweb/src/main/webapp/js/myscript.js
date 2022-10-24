@@ -222,3 +222,21 @@ function pdsCheck(){ //포토갤러리 유효성 검사
 	}//if end	
 	
 }//pdsCheck() end
+
+function pwCheck2(){
+	let passwd = document.getElementById("passwd").value;
+	passwd=passwd.trim();
+	if(passwd.length<4 || isNaN(passwd)){ //isNaN은 숫자를 입력 안하면 true가 나올것임
+		alert("비밀번호 4글자 이상으로 숫자만 입력해 주세요");
+		document.getElementById("passwd").focus();
+		return false;
+	}//if end
+	
+	let message="첨부 파일도 삭제되니다\n계속 진행할까요?";
+	if(confirm(message)){ //확인true, 취소false
+		return true; //서버로 전송
+	}else{
+		return false;
+	}//if end
+	return true;
+}//pwCheck2() end
