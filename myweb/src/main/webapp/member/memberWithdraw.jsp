@@ -7,6 +7,7 @@
 <form method="post" action="memberWithdrawProc.jsp" onsubmit="return pwCheck()"><!-- myscript.js -->
 	<table>
 	<tr>
+	탈퇴 확인을 위해 비밀번호를 입력해 주세요
 		<th>비밀번호</th>
 		<td><input type="password" name="passwd" id="passwd" required></td>
 	</tr>

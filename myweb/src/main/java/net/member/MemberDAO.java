@@ -14,6 +14,7 @@ import javax.mail.internet.InternetAddress;
 import javax.mail.internet.MimeMessage;
 
 import net.bbs.BbsDTO;
+import net.pds.PdsDTO;
 import net.utility.DBClose;
 import net.utility.DBOpen;
 import net.utility.MyAuthenticator;
@@ -396,6 +397,31 @@ public class MemberDAO { //Data Access Object
 		}//end
 
 		return cnt;
-	}//updateProc
+	}//updateProc() end
+	
+	public int memberWithdraw(MemberDTO dto) {
+		int cnt=0;
+		try {
+			con=dbopen.getConnection();
+			
+			sql = new StringBuilder();
+			
+			sql.append(" UPDATE member ");
+			sql.append(" set mlevel='F1' ");
+			sql.append(" where id=? and passwd=? ");
+			
+			pstmt = con.prepareStatement(sql.toString());
+			pstmt.setString(1, dto.getId());
+			pstmt.setString(2, dto.getPasswd());
+			
+			cnt=pstmt.executeUpdate();
+			
+		}catch (Exception e) {
+			System.out.println("회원정보 수정 실패:"+e);
+		}finally {
+			DBClose.close(con, pstmt);
+		}//end
+		return cnt;
+	}//memberWithdraw() end
 	
 }//class end

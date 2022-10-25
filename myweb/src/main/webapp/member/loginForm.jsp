@@ -53,7 +53,7 @@
 	out.println("<br><br>");
 	out.println("<a href='memberModify.jsp?id="+s_id+"'>[회원정보수정]</a>");
 	out.println("&nbsp;&nbsp;");
-	out.println("<a href='memberWithdraw.jsp'>[회원탈퇴]</a>");
+	out.println("<a href='memberWithdraw.jsp?'>[회원탈퇴]</a>");
 }//if end
 %>
  <!-- 본문끝 -->

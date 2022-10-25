@@ -20,6 +20,8 @@
 %>
 	<form name="pdsfrm" id="pdsfrm" method="post" action="pdsUpdateProc.jsp" enctype="multipart/form-data" onsubmit="return pdsCheck()"><!-- myscript.js -->
 	<input type="hidden" name="pdsno" value="<%=pdsno%>">
+	<input type="hidden" name="orifilesize" value="<%=dto.getFilesize()%>">
+	<input type="hidden" name="orifiledel" value="<%=dto.getFilename()%>">
 	<table class="table">
 	<tr>
 	   <th class="success">작성자</th>
@@ -35,9 +37,9 @@
 	</tr>
 	<tr>
 	    <th class="success" rowspan="2" >첨부파일</th>
-	    <td style="text-align: left"><input type="text" name="orifilename" id="orifilename" value="기존 선택된 파일 : <%=dto.getFilename()%>" size="40"><input type="button" id="delbutton" value="파일 삭제" onclick="removeInput()"></td>
+	    <td style="text-align: left">기존 선택된 파일 : <input type="text" name="orifilename" id="orifilename" value="<%=dto.getFilename()%>" size="40"><input type="button" id="delbutton" value="파일 삭제" onclick="removeInput()"></td>
 	</tr>
-		<td style="text-align: left"><input type="file" name="filename" id="filename"></td>
+		<td style="text-align: left">새로 변경할 파일 : <input type="file" name="filename" id="filename"></td>
     <tr>
 	    <td colspan="2" align="center">
 	       <input type="submit" value="사진 올리기" class="btn btn-success">
@@ -49,10 +51,6 @@
 	}//if end
 %>
 </div>
-<script>
-$document.ready(function(){
-		alert("hello");
-});
-</script>
+ 
 <!-- 본문끝 -->
 <%@ include file="../footer.jsp" %>

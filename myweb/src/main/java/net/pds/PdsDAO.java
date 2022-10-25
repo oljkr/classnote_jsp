@@ -172,12 +172,7 @@ public class PdsDAO { //데이터베이스관련 작업
 		return cnt;
 	}//delete() end
 	
-	public int memberWithdraw() {
-		int cnt=0;
-		return cnt;
-	}
-	
-public int updateProc(BbsDTO dto) {
+	public int updateProc(PdsDTO dto) {
 		int cnt=0;
 		try {
 			con=dbopen.getConnection();
@@ -185,15 +180,15 @@ public int updateProc(BbsDTO dto) {
 			sql = new StringBuilder();
 			
 			sql.append(" UPDATE tb_pds ");
-			sql.append(" SET wname=?, subject=?, content=?, filename=?, filesize=? ");
+			sql.append(" SET wname=?, subject=?, filename=?, filesize=? ");
 			sql.append(" WHERE pdsno=? AND passwd=? ");
 			
 			pstmt = con.prepareStatement(sql.toString());
 			pstmt.setString(1, dto.getWname());
 			pstmt.setString(2, dto.getSubject());
-			pstmt.setString(3, dto.getContent());
-			pstmt.setString(4, dto.getIp());
-			pstmt.setInt(5, dto.getBbsno());
+			pstmt.setString(3, dto.getFilename());
+			pstmt.setLong(4, dto.getFilesize());
+			pstmt.setInt(5, dto.getPdsno());
 			pstmt.setString(6, dto.getPasswd());
 			
 			cnt=pstmt.executeUpdate();
@@ -204,6 +199,6 @@ public int updateProc(BbsDTO dto) {
 			DBClose.close(con, pstmt);
 		}//end
 		return cnt;
-	}
+	}//updateProc() end
 	
 }//class end

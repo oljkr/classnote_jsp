@@ -201,7 +201,7 @@ function pdsCheck(){ //포토갤러리 유효성 검사
 	//html문서에서 확인 가능한 이미지들만 전송..(imgsrc가 먹히는 것만)
 	//아래서 file의 value가 string 값임
 	//파일명이 대문자일 수 있으니까 전부 소문자로 바꿔서 소문자로 물어보기
-	let filename=document.getElementById("filename").value; //예)sky.png
+	/*let filename=document.getElementById("filename").value; //예)sky.png
 	filename=filename.trim();
 	if(filename.length==0){
 		alert("첨부 파일 선택하세요~");
@@ -219,7 +219,7 @@ function pdsCheck(){ //포토갤러리 유효성 검사
 			alert("이미지 파일만 업로드 가능합니다~");
 			return false;
 		}//if end
-	}//if end	
+	}//if end	*/
 	
 }//pdsCheck() end
 

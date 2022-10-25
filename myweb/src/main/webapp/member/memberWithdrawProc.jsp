@@ -5,8 +5,10 @@
  <!-- 본문시작 memberWithdrawProc.jsp -->
 <h3>* 회원탈퇴 결과 *</h3>
 <%
-	dto.setId((String)session.getAttribute("s_id"));
-	dto.setPasswd(request.getParameter("passwd").trim());
+	String id=(String)session.getAttribute("s_id");
+	String pw=request.getParameter("passwd").trim();
+	dto.setId(id);
+	dto.setPasswd(pw);
 	
 	int cnt=dao.memberWithdraw(dto);
 	if(cnt==0){
