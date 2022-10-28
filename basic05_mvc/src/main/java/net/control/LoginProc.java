@@ -3,10 +3,12 @@ package net.control;
 import java.io.IOException;
 
 import javax.servlet.RequestDispatcher;
+import javax.servlet.ServletContext;
 import javax.servlet.ServletException;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+import javax.servlet.http.HttpSession;
 
 public class LoginProc extends HttpServlet{
 	@Override
@@ -18,14 +20,37 @@ public class LoginProc extends HttpServlet{
 			String uid=req.getParameter("uid").trim();
 			String upw=req.getParameter("upw").trim();
 			
+			HttpSession session=req.getSession(); 				//요청한사용자의 session 객체 선언
+			ServletContext applicaion=req.getServletContext();  //요청한사용자의 applicaion 객체 선언
+			
 			if(uid.equals("itwill") && upw.equals("1234")) {
 				//로그인 성공했을때
 				req.setAttribute("r_uid", uid);
 				req.setAttribute("r_upw", upw);
+				
+				req.setAttribute("msg", "로그인 성공~~");
+				req.setAttribute("img", "<img src='control/one.jpg' width='300px'>");
+				
+				session.setAttribute("s_uid", uid);
+				session.setAttribute("s_upw", upw);
+				
+				applicaion.setAttribute("a_uid", uid);
+				applicaion.setAttribute("a_upw", upw);
+				
 			}else {
 				//로그인 실패했을때
 				req.setAttribute("r_uid", "guest");
 				req.setAttribute("r_upw", "guest");
+				
+				req.setAttribute("msg", "로그인 실패!!");
+				req.setAttribute("img", "<img src='control/song.jpg' width='300px'>");
+				
+				session.setAttribute("s_uid", "guest");
+				session.setAttribute("s_upw", "guest");
+				
+				applicaion.setAttribute("a_uid", "guest");
+				applicaion.setAttribute("a_upw", "guest");
+		
 			}//if end
 			
 			//뷰페이지 이동
